@@ -10,9 +10,6 @@ import scalafx.scene.layout.BorderPane
 
 object Hello extends JFXApp {
 
-  val width = 300
-  val height = 200
-
   val testButton = new Button("Say Hello")
   testButton.onAction = (_: ActionEvent) => {
     println("Test this")
