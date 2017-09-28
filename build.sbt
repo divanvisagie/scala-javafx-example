@@ -14,3 +14,9 @@ lazy val root = (project in file(".")).
     )
 
   )
+
+  //need this to have styles
+  unmanagedJars in Compile += {
+  val ps = new sys.SystemProperties
+  val jh = ps("java.home")
+  Attributed.blank(file(jh) / "lib/ext/jfxrt.jar")}
