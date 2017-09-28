@@ -1,35 +1,40 @@
 package example
 
-import javafx.application.Application
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
-import javafx.scene.Scene
-import javafx.scene.control.Button
-import javafx.scene.layout.StackPane
-import javafx.stage.Stage
+import scalafx.Includes._
+import scalafx.application.JFXApp
+import scalafx.event.ActionEvent
+import scalafx.scene.Scene
+import scalafx.scene.control.Alert.AlertType
+import scalafx.scene.control.{Alert, Button}
+import scalafx.scene.layout.BorderPane
 
-object HelloWorld {
-    def main(args: Array[String]) {
-        Application.launch(classOf[HelloWorld], args: _*)
+object Hello extends JFXApp {
+
+  val width = 300
+  val height = 200
+
+  val testButton = new Button("Say Hello")
+  testButton.onAction = (_: ActionEvent) => {
+    println("Test this")
+
+    val alert = new Alert(AlertType.Information)
+    alert.title = "Hello World Info"
+    alert.headerText = "This is a hello world announcement"
+    alert.contentText = "Hello World"
+    alert.show()
+  }
+
+  private val containerBox = new BorderPane {
+    center = testButton
+  }
+
+  stage = new JFXApp.PrimaryStage {
+    title.value = "Hello World"
+    width = 300
+    height = 200
+    scene = new Scene {
+      root = containerBox
     }
+  }
 }
 
-class HelloWorld extends Application {
-   
-    override def start(primaryStage: Stage) {
-        primaryStage.setTitle("Hello World!")
-        val btn = new Button
-        btn.setText("Say 'Hello World'")
-        btn.setOnAction(new EventHandler[ActionEvent] {
-            override def handle(e: ActionEvent) {
-                println("Hello World!")
-            }
-        })
-       
-        val root = new StackPane
-        root.getChildren.add(btn)
-        primaryStage.setScene(new Scene(root, 300, 250))
-        primaryStage.show
-    }
-   
-}

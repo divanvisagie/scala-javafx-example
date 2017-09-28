@@ -10,7 +10,8 @@ lazy val root = (project in file(".")).
     name := "Hello",
     libraryDependencies += scalaTest % Test,
     libraryDependencies ++= Seq(
-      "org.scalafx" % "scalafx_2.12" % "8.0.102-R11"
+      "org.scalafx" % "scalafx_2.12" % "8.0.102-R11",
+      "org.scalatest" %% "scalatest" % "3.0.3"
     )
 
   )
